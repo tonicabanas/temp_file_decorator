@@ -21,7 +21,7 @@ def temp_file(func):
             output_original = kwargs[arg_name]
         else:
             output_original = args[arg_position]
-            args = tuple([value for index, value in enumerate(args) if value != arg_position])
+            args = tuple([value for index, value in enumerate(args) if index != arg_position])
 
         extension_file = os.path.splitext(output_original)[1]
         dir_name = os.path.dirname(output_original)
