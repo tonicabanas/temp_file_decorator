@@ -28,7 +28,8 @@ def temp_file(func):
         output_temp = os.path.join(dir_name,
                                    '{name}{extension}'.format(name=get_random_string(), extension=extension_file))
 
-        result = func(*args, **{arg_name: output_temp})
+        kwargs[arg_name] = output_temp
+        result = func(*args, **kwargs)
         os.rename(output_temp, output_original)
         return result
 
